@@ -21,27 +21,27 @@ class DataLiveApp() {
   def getMachines = this.machines
 }
 
-case class Tag(code: String, description: Option[String])
+case class Tag(code: String = "", description: Option[String] = None)
 
-case class Operator(code: String, name: Option[String], surname: Option[String], role: Option[String])
+case class Operator(code: String, name: Option[String] = None, surname: Option[String] = None, role: Option[String] = None)
 
-case class Instrument(code: String, unicode: Option[String], description: Option[String])
+case class Instrument(code: String, unicode: Option[String] = None, description: Option[String] = None)
 
-case class InstrumentInfo(manufacturer: Option[String], tag: Option[Seq[Tag]], tracking: Option[Seq[Track]], archived: Lazy[Option[Seq[Track]]])
+case class InstrumentInfo(manufacturer: Option[String] = None, tag: Option[Map[String, Tag]] = None, tracking: Option[Map[Long, Track]] = None, archived: Lazy[Option[Map[Long, Track]]])
 
-case class Program(code: String, description: Option[String], machineType: Option[String], destination: Option[Status])
+case class Program(code: String, description: Option[String] = None, machineType: Option[String] = None, destination: Option[Status] = None)
 
-case class Status(code: String, description: Option[String])
+case class Status(code: String, description: Option[String] = None)
 
-case class AresSite(code: String, description: Option[String], instruments: Option[Seq[Instrument]], machines: Option[Seq[SteelcoMachine]])
+case class AresSite(code: String, description: Option[String] = None, instruments: Option[Map[String, Instrument]] = None, machines: Option[Map[String, SteelcoMachine]] = None)
 
-case class AresGroup(name: String, ldap: String, fullname: Option[String], role: Option[String], sites: Option[Seq[AresSite]])
+case class AresGroup(name: String, ldap: Option[String] = None, fullname: Option[String] = None, role: Option[String] = None, sites: Option[Map[String, AresSite]] = None)
 
-case class AresUser(username: String, password: String, fullname: Option[String], group: Option[AresGroup])
+case class AresUser(username: String, password: String, fullname: Option[String] = None, group: Option[AresGroup] = None)
 
-case class AdditionalInfo(doctor: Option[String], nurse: Option[String], patient: Option[String], note: Option[String])
+case class AdditionalInfo(doctor: Option[String] = None, nurse: Option[String] = None, patient: Option[String] = None, room: Option[String] = None, note: Option[String] = None)
 
-case class Track(created: Instant, status: Option[String], operator: Option[Operator], machine: Option[SteelcoMachine], cycleNumber: Option[Long], program: Option[String], result: Option[String], additionalInfo: Option[AdditionalInfo], rawData: Lazy[Map[String, Any]])
+case class Track(created: Instant, status: Option[String] = None, operator: Option[Operator] = None, machine: Option[SteelcoMachine] = None, cycleNumber: Option[Long] = None, program: Option[String] = None, result: Option[String] = None, additionalInfo: Option[AdditionalInfo] = None, rawData: Lazy[Map[String, Any]])
 
 /**
  * Created by Riccardo Merolla on 09/06/2020.

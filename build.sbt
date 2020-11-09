@@ -1,6 +1,6 @@
 organization := "it.ictgroup"
 name := "steelcomodel"
-version := "0.2.0"
+version := "0.2.6"
 scalaVersion := "2.13.1"
 
 githubOwner := "ict-group"
