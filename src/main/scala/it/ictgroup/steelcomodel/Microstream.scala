@@ -14,7 +14,7 @@ case class SteelcoMachine(machineCode: String, serial: String = "")
 
 case class MachineInfo(machineType: String, address: String, port: String, pointer: Int = 0, memoryMaxSize: Int = 0, cycles: Lazy[Option[Map[Long, Cycle]]] = Lazy.Reference(None), archivedCycles: Lazy[Option[Map[Long, Cycle]]] = Lazy.Reference(None))
 
-case class NCGSensorData(machineCode: String, serial: String, order: String, cycleNumber: string, data: Lazy[Option[Map[String, Any]] = None)
+case class NCGSensorData(machineCode: String, serial: String, order: String, cycleNumber: String, data: Lazy[Option[Map[String, Any]]] = Lazy.Reference(None))
 
 
 class DataLiveApp() {
