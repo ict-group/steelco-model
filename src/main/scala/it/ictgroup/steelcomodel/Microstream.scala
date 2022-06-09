@@ -14,11 +14,16 @@ case class SteelcoMachine(machineCode: String, serial: String = "")
 
 case class MachineInfo(machineType: String, address: String, port: String, pointer: Int = 0, memoryMaxSize: Int = 0, cycles: Lazy[Option[Map[Long, Cycle]]] = Lazy.Reference(None), archivedCycles: Lazy[Option[Map[Long, Cycle]]] = Lazy.Reference(None))
 
+case class NCGSensorData(machineCode: String, serial: String, order: String, cycleNumber: string, data: Lazy[Option[Map[String, Any]] = None)
+
+
 class DataLiveApp() {
 
   final private val machines = new HashMap[SteelcoMachine, MachineInfo]
+  final private val ncgSensorData = new HashMap[String, NCGSensorData]
 
   def getMachines = this.machines
+  def getNCGSensorData = this.ncgSensorData
 }
 
 case class Tag(code: String = "", description: Option[String] = None)
