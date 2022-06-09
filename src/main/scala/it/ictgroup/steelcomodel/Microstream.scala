@@ -1,7 +1,7 @@
 package it.ictgroup.steelcomodel
 
 import java.time.Instant
-import java.util.{ Date, HashMap }
+import java.util.{Date, HashMap}
 import one.microstream.reference.Lazy
 
 /**
@@ -12,7 +12,7 @@ case class Cycle(cycleNumber: Long, cycleDate: Date, order: Option[String], prog
 
 case class SteelcoMachine(machineCode: String, serial: String = "")
 
-case class MachineInfo(machineType: String, address: String, port: String, pointer: Int = 0, memoryMaxSize: Int = 0, cycles: Option[Map[Long, Cycle]] = None)
+case class MachineInfo(machineType: String, address: String, port: String, pointer: Int = 0, memoryMaxSize: Int = 0, cycles: Lazy[Option[Map[Long, Cycle]]] = Lazy.Reference(None), archivedCycles: Lazy[Option[Map[Long, Cycle]]] = Lazy.Reference(None))
 
 class DataLiveApp() {
 
@@ -27,7 +27,7 @@ case class Operator(code: String, name: Option[String] = None, surname: Option[S
 
 case class Instrument(code: String, unicode: Option[String] = None, description: Option[String] = None)
 
-case class InstrumentInfo(manufacturer: Option[String] = None, tag: Option[Map[String, Tag]] = None, tracking: Option[Map[Long, Track]] = None, archived: Lazy[Option[Map[Long, Track]]])
+case class InstrumentInfo(manufacturer: Option[String] = None, tag: Option[Map[String, Tag]] = None, tracking: Lazy[Option[Map[Long, Track]]] = Lazy.Reference(None), archived: Lazy[Option[Map[Long, Track]]] = Lazy.Reference(None))
 
 case class Program(code: String, description: Option[String] = None, machineType: Option[String] = None, destination: Option[Status] = None)
 

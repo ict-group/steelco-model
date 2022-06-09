@@ -1,14 +1,12 @@
 organization := "it.ictgroup"
 name := "steelcomodel"
-version := "0.2.6"
+version := "0.6.5"
 scalaVersion := "2.13.1"
 
 githubOwner := "ict-group"
 githubRepository := "steelco-model"
 
-val microstreamVersion = "03.00.00-MS-GA"
+val microstreamVersion = "06.01.00-MS-GA"
 
-libraryDependencies += "one.microstream"     % "storage.embedded"               % microstreamVersion
-libraryDependencies += "one.microstream"     % "storage.embedded.configuration" % microstreamVersion
-
-resolvers += "microstream-releases" at "https://repo.microstream.one/repository/maven-public/"
+libraryDependencies += "one.microstream"     % "microstream-storage-embedded"               % microstreamVersion
+libraryDependencies += "one.microstream"     % "microstream-storage-embedded-configuration" % microstreamVersion
